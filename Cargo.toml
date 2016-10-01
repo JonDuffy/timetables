@@ -1,0 +1,6 @@
+[package]
+name = "sched-time"
+version = "0.1.0"
+authors = ["Jon Duffy <jonduffy@me.com>"]
+
+[dependencies]
