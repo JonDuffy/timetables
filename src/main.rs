@@ -141,9 +141,9 @@ fn main () {
         features.push(Feature::new());
     }
 
-    // populate the students with there events
-    for aStudent in 0..num_students {
-        students[aStudent].addClass()
-    }
+    // // populate the students with their events
+    // for aStudent in 0..num_students {
+    //     students[aStudent].addClass()
+    // }
 
 }
