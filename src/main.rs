@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::Read;
 use std::collections::HashMap;
 
+
 struct Student {
     //vector of classes
     classes: Vec<i32>
@@ -87,7 +88,7 @@ impl Event {
 
 fn main () {
     let mut data = String::new();
-    let mut f = File::open("data/ittc/comp-2007-2-1.tim.txt").unwrap();
+    let mut f = File::open("ittc/comp-2007-2-1.tim.txt").unwrap();
     f.read_to_string(&mut data).unwrap();
 
     let mut data: Vec<i32> = data
@@ -105,41 +106,52 @@ fn main () {
     println!("number of features = {}",num_features);
     println!("number of students = {}",num_students);
 
+    let mut rooms = HashMap::new();
+    // let mut event = HashMap::new();
+    // let mut students = HashMap::new();
+    // let mut features = HashMap::new();
+
+
     //collections of each type
+    //
+    // let mut rooms: Box<Vec<Room>> = Box::new(vec![]);
+    // let mut events: Box<Vec<Event>> = Box::new(vec![]);
+    // let mut students: Box<Vec<Student>> = Box::new(vec![]);
+    // let mut features: Box<Vec<Feature>> = Box::new(vec![]);
 
-    let mut rooms: Box<Vec<Room>> = Box::new(vec![]);
-    let mut events: Box<Vec<Event>> = Box::new(vec![]);
-    let mut students: Box<Vec<Student>> = Box::new(vec![]);
-    let mut features: Box<Vec<Feature>> = Box::new(vec![]);
-
-    // create rooms and
-    // read in room numbers
-
-    for numbers in 0..num_rooms {
-        rooms.push(Room::new(data.remove(0)));
+    // // create rooms and
+    // // read in room numbers
+    //
+    for number in 0..num_rooms {
+        rooms.insert(number,Room::new(data.remove(0)));
     }
 
-    for room in &*rooms {
-        println!("{}", room.get_capacity());
+    println!("");
+    println!("Capacity of each room");
+    println!("");
+
+    for (id, room) in &rooms {
+        let capacity = room.get_capacity();
+        println!("Room {:?} has {} capacity", id, capacity);
     }
-
-    // create students
-
-    for student in 0..num_students {
-        students.push(Student::new());
-    }
-
-    // create events
-
-    for event in 0..num_events {
-        events.push(Event::new());
-    }
-
-    // create features
-
-    for feature in 0..num_features {
-        features.push(Feature::new());
-    }
+    //
+    // // create students
+    //
+    // for student in 0..num_students {
+    //     students.push(Student::new());
+    // }
+    //
+    // // create events
+    //
+    // for event in 0..num_events {
+    //     events.push(Event::new());
+    // }
+    //
+    // // create features
+    //
+    // for feature in 0..num_features {
+    //     features.push(Feature::new());
+    // }
 
     // // populate the students with their events
     // for aStudent in 0..num_students {
